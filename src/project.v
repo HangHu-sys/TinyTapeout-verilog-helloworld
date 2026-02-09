@@ -52,7 +52,7 @@ module tt_um_hang_myrings (
     // Distance approximation (max + min/2)
     wire [9:0] max_d = (abs_x > abs_y) ? abs_x : abs_y;
     wire [9:0] min_d = (abs_x < abs_y) ? abs_x : abs_y;
-    wire [9:0] radius = max_d - {1'b0, min_d[4:1]};
+    wire [9:0] radius = max_d ^ {1'b0, min_d[7:1]};
 
     // Animated radius for concentric rings with direction control
     wire [7:0] anim_offset = frame[6:0] + frame[6:0];
